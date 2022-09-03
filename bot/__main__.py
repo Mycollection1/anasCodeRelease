@@ -17,7 +17,7 @@ from .helper.telegram_helper.message_utils import sendMessage, sendMarkup, editM
 from .helper.telegram_helper.filters import CustomFilters
 from .helper.telegram_helper.button_build import ButtonMaker
 
-from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, delete, count, leech_settings, search, rss
+from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, delete, count, leech_settings, search, rss, sleep
 
 
 def stats(update, context):
@@ -82,7 +82,6 @@ def restart(update, context):
     if Interval:
         Interval[0].cancel()
         Interval.clear()
-    alive.kill()
     clean_all()
     srun(["pkill", "-9", "-f", "gunicorn|extra-api|last-api|megasdkrest|new-api"])
     srun(["python3", "update.py"])
